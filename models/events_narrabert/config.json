@@ -1,0 +1,15 @@
+{
+  "model_name": "roberta-base",
+  "max_len": 256,
+  "dims": [
+    "temporal_sequential",
+    "causal"
+  ],
+  "data_source": "<path_to_event_relation_outputs>/google_gemma-4-31B-it/<run_timestamp>",
+  "n_train": 6219,
+  "n_val": 690,
+  "val_frac": 0.1,
+  "best_epoch": 4,
+  "seed": 42,
+  "test_f1_gold": 0.805
+}
