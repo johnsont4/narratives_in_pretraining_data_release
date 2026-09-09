@@ -1,0 +1,41 @@
+# Environment: narr-release
+#
+#   conda create -n narr-release python=3.12
+#   conda activate narr-release
+#   pip install -r requirements.txt
+#
+# API keys for the LLM labelling scripts are read from the environment:
+#   ANTHROPIC_API_KEY, DOUBLEWORD_API_KEY
+
+# --- LLM APIs (model_scripts/llm_api_calls/) ---
+anthropic
+openai
+
+# --- data ---
+pandas
+numpy
+scipy
+scikit-learn
+# pyarrow — MUST be >=20. Earlier versions raise
+# "OSError: Repetition level histogram size mismatch" on the Hugging Face parquet files.
+pyarrow>=20
+
+# --- Hugging Face models and datasets (tutorials/) ---
+datasets
+huggingface_hub
+
+# --- running the tutorial notebooks ---
+jupyterlab
+ipywidgets
+
+# --- NarraBERT training (model_scripts/narrabert_training_files/) ---
+# torch — version-pinned but NOT pinned to a CUDA build, so this installs on CPU-only
+# and non-Linux machines. Results were produced with 2.10.0+cu128 on NVIDIA H100s. To
+# reproduce that exact build on a CUDA 12.8 driver:
+#   pip install torch==2.10.0+cu128 --index-url https://download.pytorch.org/whl/cu128
+torch==2.10.0
+# transformers — PINNED. These envs exchange model checkpoints and BERT token counts, so
+# they must agree on the version. 4.53.2 broke the topic classifier in dolma-sampling;
+# 4.41.2 / tokenizers 0.19.1 is the combination model-training-env ran successfully.
+transformers==4.41.2
+tokenizers==0.19.1

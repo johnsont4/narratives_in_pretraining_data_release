@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Data downloaded from Hugging Face (see README → Data)
+annotated_data/
+llm_labels/
+
+# Annotator and training run outputs
+outputs/
+checkpoints/
